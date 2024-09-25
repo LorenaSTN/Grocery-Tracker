@@ -5,7 +5,7 @@ import ProductList from "./ProductsList";
 
 function App() {
   const [product, setProduct] = useState("");
-  const [products, setProducts] = useState([]);
+  const [productsList, setProductsList] = useState([]);
 
   const handleInputChange = (ev) => {
     setProduct(ev.target.value);
@@ -14,8 +14,7 @@ function App() {
   const handleAddProduct = (ev) => {
     ev.preventDefault();
     if (product.trim() !== "") {
-      setProducts([...products, product]);
-      setProduct("");
+      setProductsList([...productsList, product]);
     }
   };
 
@@ -27,7 +26,7 @@ function App() {
         product={product}
         onInputChange={handleInputChange}
         onAddProduct={handleAddProduct}
-        products={products}
+        products={productsList}
       />
     </div>
   );
