@@ -1,9 +1,15 @@
 import "../scss/main/ProductsList.scss";
 
-function ProductsList({ product, onInputChange, onAddProduct, products }) {
+function ProductsList({
+  product,
+  onInputChange,
+  onAddProduct,
+  products,
+  onCheckedProduct,
+}) {
   return (
-    <div>
-      <section className="section1">
+    <div className="container_products">
+      <div className="products__form">
         <form className="form" onSubmit={onAddProduct}>
           <input
             className="input js-inputAdd"
@@ -19,18 +25,24 @@ function ProductsList({ product, onInputChange, onAddProduct, products }) {
           </button>
         </form>
 
-        <div className="productslist">
+        <div className="products_list">
           <h3>Grocery List:</h3>
           <ul>
             {products.map((prod, index) => (
-              <li>
-                <input type="checkbox" />
-                <span key={index}>{prod}</span>
+              <li key={index}>
+                <input
+                  type="checkbox"
+                  checked={prod.checked}
+                  onChange={() => onCheckedProduct(index)}
+                />
+                <span className={prod.checked ? "checked" : ""}>
+                  {prod.name}
+                </span>
               </li>
             ))}
           </ul>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

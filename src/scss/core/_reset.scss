@@ -6,6 +6,11 @@
 
 body {
   margin: 0;
+  background: radial-gradient(
+    circle,
+    rgba(252, 252, 201, 1) 0%,
+    rgba(235, 196, 102, 1) 65%
+  );
 }
 
 ul {
@@ -13,4 +18,8 @@ ul {
 }
 li {
   list-style-type: none;
+}
+
+a {
+  cursor: auto;
 }
