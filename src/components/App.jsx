@@ -1,12 +1,15 @@
 import "../scss/App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import ProductList from "./ProductsList";
 import { Route, Routes } from "react-router-dom";
+import localStorage from "../services/localStorage";
 
 function App() {
   const [product, setProduct] = useState("");
-  const [productsList, setProductsList] = useState([]);
+  const [productsList, setProductsList] = useState(
+    localStorage.get("groceryList", [])
+  );
 
   const handleInputChange = (ev) => {
     setProduct(ev.target.value);
@@ -26,6 +29,10 @@ function App() {
     );
     setProductsList(updatedProducts);
   };
+
+  useEffect(() => {
+    localStorage.set("groceryList", productsList);
+  }, [productsList]);
 
   return (
     <div className="container">

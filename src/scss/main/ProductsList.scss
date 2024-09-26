@@ -1,6 +1,12 @@
 .container_products {
+  padding: 40px;
   height: 100vh;
   display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin: 20px;
 }
 
 .products {
@@ -9,16 +15,21 @@
     flex-direction: column;
     align-items: center;
   }
+
+  &__title {
+    text-align: center;
+    font-family: "Satisfy";
+    font-size: 35px;
+  }
+
+  &__span {
+    font-family: "Satisfy", cursive;
+  }
 }
 
-.productslist {
-  background: rgba(255, 255, 255, 0.45);
-  -webkit-backdrop-filter: blur(11px);
-  backdrop-filter: blur(11px);
-  border: 1px solid rgba(255, 255, 255, 0.225);
-  border-radius: 5px;
-  width: 20%;
-}
+// .productslist {
+
+// }
 
 .checked {
   text-decoration: line-through;
