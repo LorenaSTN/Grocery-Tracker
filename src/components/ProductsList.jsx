@@ -1,3 +1,5 @@
+import "../scss/main/ProductsList.scss";
+
 function ProductsList({ product, onInputChange, onAddProduct, products }) {
   return (
     <div>
@@ -17,8 +19,8 @@ function ProductsList({ product, onInputChange, onAddProduct, products }) {
           </button>
         </form>
 
-        <div>
-          <h3>Product List:</h3>
+        <div className="productslist">
+          <h3>Grocery List:</h3>
           <ul>
             {products.map((prod, index) => (
               <li>

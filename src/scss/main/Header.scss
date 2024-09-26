@@ -1,0 +1,15 @@
+.header {
+  &__title {
+    width: 65%;
+    margin: 0 auto;
+    display: block;
+    padding-top: 15px;
+
+    @media screen and (min-width: 790px) {
+      width: 45%;
+    }
+  }
+
+  // &__subtitle {
+  // }
+}
