@@ -5,9 +5,17 @@ import "../scss/main/Menu.scss";
 function Menu() {
   return (
     <div className="menu__container">
-      <img className="menu__circles" src={ShoppingCart} alt="" />
-      <img className="menu__circles" src={Wallet} alt="Wallet" />
-      <img className="menu__circles" src="" alt="" />
+      <a className="menu__a" href="">
+        <img className="menu__circles" src={ShoppingCart} alt="Shopping Cart" />
+      </a>
+
+      <a className="menu__a" href="">
+        <img className="menu__circles" src={Wallet} alt="Wallet" />
+      </a>
+
+      <a className="menu__a" href="">
+        <img className="menu__circles" src="" alt="" />
+      </a>
     </div>
   );
 }

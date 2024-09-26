@@ -1,7 +1,6 @@
 import "../scss/App.scss";
 import { useState } from "react";
 import Header from "./Header";
-import Menu from "./Menu";
 import ProductList from "./ProductsList";
 
 function App() {
@@ -24,14 +23,12 @@ function App() {
       <Header />
 
       <main>
-        <Menu />
-
-        {/* <ProductList
-        product={product}
-        onInputChange={handleInputChange}
-        onAddProduct={handleAddProduct}
-        products={productsList}
-      /> */}
+        <ProductList
+          product={product}
+          onInputChange={handleInputChange}
+          onAddProduct={handleAddProduct}
+          products={productsList}
+        />
       </main>
     </div>
   );

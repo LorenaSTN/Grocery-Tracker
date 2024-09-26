@@ -1,4 +1,11 @@
 .header {
+  background: radial-gradient(
+    circle,
+    rgba(252, 252, 201, 1) 0%,
+    rgba(235, 196, 102, 1) 65%
+  );
+  min-height: 100vh;
+
   &__title {
     width: 65%;
     margin: 0 auto;
@@ -7,6 +14,19 @@
 
     @media screen and (min-width: 790px) {
       width: 45%;
+    }
+  }
+
+  &__baguette {
+    display: none;
+
+    @media screen and (min-width: 790px) {
+      display: block;
+      position: absolute;
+      transform: rotate(30deg);
+      top: 2%;
+      right: 70%;
+      z-index: 0;
     }
   }
 

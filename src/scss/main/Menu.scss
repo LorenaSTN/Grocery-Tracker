@@ -5,6 +5,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
+    z-index: 1;
 
     @media screen and (min-width: 590px) {
       //   margin-top: 110px;
@@ -15,12 +17,19 @@
     }
   }
 
-  &__circles {
-    width: 20%;
-    margin: 20px;
-
-    @media screen and (min-width: 790px) {
-      width: 15%;
+  &__a {
+    cursor: pointer;
+    width: 100px;
+    @media screen and (min-width: 490px) {
+      width: 150px;
     }
+    @media screen and (min-width: 790px) {
+      width: 200px;
+    }
+  }
+
+  &__circles {
+    margin: 20px;
+    width: 100%;
   }
 }

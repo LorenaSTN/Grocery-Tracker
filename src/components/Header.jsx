@@ -1,5 +1,7 @@
 import Grocery from "../images/grocery.png";
 import "../scss/main/Header.scss";
+import Menu from "../components/Menu.jsx";
+import Baguette from "../images/baguette.png";
 
 function Header() {
   return (
@@ -13,6 +15,10 @@ function Header() {
       </a>
 
       <img className="header__title" src={Grocery} alt="Grocery Tracker" />
+
+      <img className="header__baguette" src={Baguette} alt="" />
+
+      <Menu />
     </header>
   );
 }
