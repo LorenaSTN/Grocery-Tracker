@@ -4,7 +4,6 @@ import Header from "./Header";
 import ProductList from "./ProductsList";
 import { Route, Routes } from "react-router-dom";
 import localStorage from "../services/localStorage";
-import Wallet from "./Wallet";
 
 function App() {
   const [product, setProduct] = useState("");
@@ -31,6 +30,11 @@ function App() {
     setProductsList(updatedProducts);
   };
 
+  const handleRemoveProduct = (index) => {
+    const updatedProducts = productsList.filter((_, i) => i !== index);
+    setProductsList(updatedProducts);
+  };
+
   useEffect(() => {
     localStorage.set("groceryList", productsList);
   }, [productsList]);
@@ -49,11 +53,10 @@ function App() {
               onAddProduct={handleAddProduct}
               products={productsList}
               onCheckedProduct={handleCheckedProduct}
+              onRemoveProduct={handleRemoveProduct}
             />
           }
         />
-
-        <Route path="/wallet" element={<Wallet />} />
       </Routes>
     </div>
   );

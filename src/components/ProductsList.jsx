@@ -7,8 +7,16 @@ function ProductsList({
   onAddProduct,
   products,
   onCheckedProduct,
+  onRemoveProduct,
   onAddValue,
 }) {
+  const handleCheck = (index) => {
+    onCheckedProduct(index);
+  };
+
+  const handleRemove = (index) => {
+    onRemoveProduct(index);
+  };
   return (
     <div className="container_products">
       <img className="products__juice" src={Juice} alt="Juice" />
@@ -37,13 +45,19 @@ function ProductsList({
                   type="checkbox"
                   className="products__input"
                   checked={prod.checked}
-                  onChange={() => onCheckedProduct(index)}
+                  onChange={handleCheck.bind(null, index)}
                 />
                 <span
                   className={`products__span ${prod.checked ? "checked" : ""}`}
                 >
                   {prod.name}
                 </span>
+                <button
+                  className="material-symbols-outlined products__button"
+                  onClick={handleRemove.bind(null, index)}
+                >
+                  remove
+                </button>
               </li>
             ))}
           </ul>

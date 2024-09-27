@@ -3,11 +3,24 @@
   overflow: hidden;
   position: relative;
 
+  &__nav {
+    margin-right: 15px;
+  }
+
+  &__li {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__profile {
+    width: 3vw;
+  }
+
   &__title {
     width: 65%;
     margin: 0 auto;
     display: block;
-    padding: 40px 0px;
+    padding: 35px 0px;
 
     @media screen and (min-width: 790px) {
       width: 50%;
