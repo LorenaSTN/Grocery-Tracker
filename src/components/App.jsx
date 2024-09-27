@@ -4,6 +4,7 @@ import Header from "./Header";
 import ProductList from "./ProductsList";
 import { Route, Routes } from "react-router-dom";
 import localStorage from "../services/localStorage";
+import Wallet from "./Wallet";
 
 function App() {
   const [product, setProduct] = useState("");
@@ -42,17 +43,17 @@ function App() {
         <Route
           path="/shoppinglist"
           element={
-            <>
-              <ProductList
-                product={product}
-                onInputChange={handleInputChange}
-                onAddProduct={handleAddProduct}
-                products={productsList}
-                onCheckedProduct={handleCheckedProduct}
-              />
-            </>
+            <ProductList
+              product={product}
+              onInputChange={handleInputChange}
+              onAddProduct={handleAddProduct}
+              products={productsList}
+              onCheckedProduct={handleCheckedProduct}
+            />
           }
         />
+
+        <Route path="/wallet" element={<Wallet />} />
       </Routes>
     </div>
   );

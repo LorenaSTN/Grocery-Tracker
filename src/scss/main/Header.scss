@@ -7,24 +7,24 @@
     width: 65%;
     margin: 0 auto;
     display: block;
-    padding-top: 15px;
+    padding: 40px 0px;
 
     @media screen and (min-width: 790px) {
-      width: 45%;
+      width: 50%;
     }
   }
 
-  &__baguette {
+  &__donut1 {
     display: none;
 
     @media screen and (min-width: 790px) {
       display: block;
       position: absolute;
-      transform: rotate(30deg);
-      top: 2%;
-      right: 70%;
+      transform: rotate(20deg);
+      top: 65%;
+      left: 84%;
       z-index: 0;
-      width: 60vw;
+      width: 30vw;
     }
   }
 
@@ -32,12 +32,11 @@
     display: none;
 
     @media screen and (min-width: 790px) {
-      width: 30vw;
+      width: 40vw;
       display: block;
       position: absolute;
-      transform: rotate(355deg);
-      bottom: 63%;
-      left: 84%;
+      bottom: 50%;
+      right: 81%;
       z-index: 0;
     }
   }

@@ -3,13 +3,12 @@
     // margin-top: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     position: relative;
     z-index: 1;
 
     @media screen and (min-width: 590px) {
-      //   margin-top: 110px;
       padding-top: 30px;
       display: flex;
       flex-direction: row;
@@ -19,17 +18,18 @@
 
   &__a {
     cursor: pointer;
-    width: 100px;
+    width: 90px;
     @media screen and (min-width: 490px) {
-      width: 150px;
+      width: 120px;
     }
     @media screen and (min-width: 790px) {
-      width: 200px;
+      width: 155px;
     }
   }
 
   &__circles {
-    margin: 20px;
     width: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgb(135, 115, 80);
   }
 }
