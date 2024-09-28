@@ -21,6 +21,7 @@
     margin: 0 auto;
     display: block;
     padding: 35px 0px;
+    filter: drop-shadow(0px 0px 12px rgb(135, 115, 80));
 
     @media screen and (min-width: 790px) {
       width: 50%;
@@ -33,11 +34,11 @@
     @media screen and (min-width: 790px) {
       display: block;
       position: absolute;
-      transform: rotate(20deg);
-      top: 65%;
-      left: 84%;
+      transform: rotate(340deg);
+      top: 50%;
+      left: 75%;
       z-index: 0;
-      width: 30vw;
+      width: 45vw;
     }
   }
 
@@ -49,11 +50,8 @@
       display: block;
       position: absolute;
       bottom: 50%;
-      right: 81%;
+      right: 80%;
       z-index: 0;
     }
   }
-
-  // &__subtitle {
-  // }
 }

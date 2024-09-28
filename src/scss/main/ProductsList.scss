@@ -1,8 +1,17 @@
-.container_products {
-  padding: 40px;
+.cont {
   height: 100vh;
+
+  &__nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.container_products {
+  padding: 10px;
+
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .form {
@@ -15,17 +24,20 @@
 }
 
 .products {
+  &__home {
+    padding: 15px;
+    width: 3.5vw;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px rgb(135, 115, 80));
+  }
   &__juice {
     display: none;
 
     @media screen and (min-width: 790px) {
       display: block;
-      position: absolute;
-      top: 16%;
-      left: 4%;
       z-index: 0;
       width: 30vw;
-      margin-left: 150px;
+      margin-left: 100px;
     }
   }
   &__form {
@@ -33,7 +45,7 @@
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-left: 300px;
+    margin-right: 150px;
   }
 
   &__list {
@@ -130,4 +142,43 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+.button {
+  background-color: rgb(255, 179, 48);
+  font-family: "Cabin", sans-serif;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  color: rgb(59, 25, 3);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 300px;
+
+  &____close {
+    cursor: pointer;
+  }
+}
+
+.modal-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
