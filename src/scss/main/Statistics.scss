@@ -1,0 +1,51 @@
+.statistics {
+  height: 100vh;
+
+  &__nuts {
+    display: none;
+
+    @media screen and (min-width: 790px) {
+      display: block;
+      position: absolute;
+      top: 65%;
+      left: 73%;
+      z-index: 0;
+      width: 16vw;
+      margin-left: 100px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__monthlist {
+    background-image: url("../../images/paper.png");
+    background-size: cover;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+  }
+
+  &__title {
+    font-family: "Cabin", sans-serif;
+  }
+
+  &__list {
+    padding: 20px;
+    margin: 10px;
+    width: fit-content;
+    border-radius: 5px;
+  }
+
+  &__li {
+    font-family: "Cabin", sans-serif;
+  }
+
+  &__chart {
+    width: 40vw;
+    font-family: "Cabin", sans-serif;
+  }
+}

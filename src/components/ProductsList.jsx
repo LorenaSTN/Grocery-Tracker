@@ -1,8 +1,7 @@
 import "../scss/main/ProductsList.scss";
-import Home from "../images/home.png";
 import Juice from "../images/juice.png";
-import { Link } from "react-router-dom";
 import Modal from "./Modal";
+import Nav from "./Nav";
 
 function ProductsList({
   product,
@@ -18,6 +17,7 @@ function ProductsList({
   price,
   onSubmitPrice,
   total,
+  onSaveTotal,
 }) {
   const handleCheck = (index) => {
     onCheckedProduct(index);
@@ -27,63 +27,61 @@ function ProductsList({
     onRemoveProduct(index);
   };
   return (
-    <>
-      <div className="cont">
-        <nav className="cont__nav">
-          <Link to="/">
-            <img className="products__home" src={Home} alt="Home" />
-          </Link>
-        </nav>
-        <div className="container_products">
+    <div className="cont">
+      <Nav />
+      <div className="container_products">
+        <a href="https://subpng.com/png/pressed-orange-juice-bottle-t8xpfwcrjlpt45ov.html">
           <img className="products__juice" src={Juice} alt="Juice" />
-          <div className="products__form">
-            <form className="form" onSubmit={onAddProduct}>
-              <input
-                className="input__add"
-                type="text"
-                name="addProduct"
-                id="addProduct"
-                placeholder="New Product"
-                value={product}
-                onChange={onInputChange}
-              />
-              <button className="button" type="submit">
-                Add
-              </button>
-            </form>
+        </a>
 
-            <div className="products__list">
-              <h3 className="products__title">Grocery List :</h3>
-              <ul className="products__ul">
-                {products.map((prod, index) => (
-                  <li className="products__li" key={index}>
-                    <input
-                      type="checkbox"
-                      className="products__input"
-                      checked={prod.checked}
-                      onChange={handleCheck.bind(null, index)}
-                    />
-                    <span
-                      className={`products__span ${
-                        prod.checked ? "checked" : ""
-                      }`}
-                    >
-                      {prod.name}
-                    </span>
-                    <button
-                      className="material-symbols-outlined products__button"
-                      onClick={handleRemove.bind(null, index)}
-                    >
-                      remove
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <h4 className="products__total">
-              Total Spent: {total.toFixed(2)}€
-            </h4>
+        <div className="products__form">
+          <form className="form" onSubmit={onAddProduct}>
+            <input
+              className="input__add"
+              type="text"
+              name="addProduct"
+              id="addProduct"
+              placeholder="New Product"
+              value={product}
+              onChange={onInputChange}
+            />
+            <button className="button" type="submit">
+              Add
+            </button>
+          </form>
+
+          <div className="products__list">
+            <h3 className="products__title">Grocery List :</h3>
+            <ul className="products__ul">
+              {products.map((prod, index) => (
+                <li className="products__li" key={index}>
+                  <input
+                    type="checkbox"
+                    className="products__input"
+                    checked={prod.checked}
+                    onChange={handleCheck.bind(null, index)}
+                  />
+                  <span
+                    className={`products__span ${
+                      prod.checked ? "checked" : ""
+                    }`}
+                  >
+                    {prod.name}
+                  </span>
+                  <button
+                    className="material-symbols-outlined products__button"
+                    onClick={handleRemove.bind(null, index)}
+                  >
+                    remove
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
+          <h4 className="products__total">Total Spent: {total.toFixed(2)}€</h4>
+          <button className="button" onClick={onSaveTotal}>
+            Finish Purchase
+          </button>
         </div>
       </div>
       <Modal
@@ -95,7 +93,7 @@ function ProductsList({
         onSubmitPrice={onSubmitPrice}
         products={products}
       />
-    </>
+    </div>
   );
 }
 

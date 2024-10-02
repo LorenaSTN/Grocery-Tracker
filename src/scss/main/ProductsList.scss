@@ -36,7 +36,7 @@
     @media screen and (min-width: 790px) {
       display: block;
       z-index: 0;
-      width: 30vw;
+      width: 26vw;
       margin-left: 100px;
     }
   }
@@ -100,6 +100,10 @@
     border: none;
     background-color: inherit;
     margin-left: 7px;
+  }
+
+  &__total {
+    font-family: "Cabin", sans-serif;
   }
 }
 

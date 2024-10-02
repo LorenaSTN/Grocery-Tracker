@@ -7,19 +7,14 @@ import Donut2 from "../images/donut2.png";
 function Header() {
   return (
     <header className="header">
-      {/* <nav className="header__nav">
-        <ul>
-          <li className="header__li">
-            <img className="header__profile" src={Profile} alt="" />
-          </li>
-        </ul>
-      </nav> */}
       <img className="header__title" src={Grocery} alt="Grocery Tracker" />
 
-      <img className="header__donut1" src={Donut2} alt="Donut" />
-
       <a href="https://subpng.com/png/pink-sprinkle-donut-png-91-86uhwlbsqitrnvy4.html">
-        <img className="header__donut" src={Donut} alt="" />
+        <img className="header__donut1" src={Donut2} alt="Donut" />{" "}
+      </a>
+
+      <a href="https://subpng.com/png/cheesecake-donut-png-05232024-sgdage1jnkv0nc95.html">
+        <img className="header__donut" src={Donut} alt="Donut" />
       </a>
 
       <Menu />
