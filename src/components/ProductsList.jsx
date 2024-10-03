@@ -84,6 +84,7 @@ function ProductsList({
           </button>
         </div>
       </div>
+
       <Modal
         showModal={showModal}
         onCloseModal={onCloseModal}

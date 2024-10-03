@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Header from "./Header";
 import ProductList from "./ProductsList";
 import { Route, Routes, useLocation } from "react-router-dom";
-import localStorage from "../services/localStorage";
+import localStorage from "./services/localStorage.js";
 import Statistics from "./Statistics";
 import { AnimatePresence, motion } from "framer-motion";
 

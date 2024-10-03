@@ -8,17 +8,16 @@
       display: block;
       position: absolute;
       top: 65%;
-      left: 73%;
+      left: 83%;
       z-index: 0;
       width: 16vw;
-      margin-left: 100px;
     }
   }
 
   &__container {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: center;
+    justify-content: center;
   }
 
   &__monthlist {
@@ -42,6 +41,11 @@
 
   &__li {
     font-family: "Cabin", sans-serif;
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-around;
   }
 
   &__chart {
