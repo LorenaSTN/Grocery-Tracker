@@ -5,10 +5,10 @@ import Statistics from "../images/statistic.png";
 function Icons() {
   const location = useLocation();
 
-  const icon = location.pathname === "/shoppingList" ? Statistics : Shopping;
+  const icon = location.pathname === "/shoppinglist" ? Statistics : Shopping;
 
   const linkTo =
-    location.pathname === "/shoppingList" ? "/statistics" : "/shoppingList";
+    location.pathname === "/shoppinglist" ? "/statistics" : "/shoppinglist";
 
   return (
     <Link to={linkTo}>
