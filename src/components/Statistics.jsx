@@ -9,7 +9,6 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-import Nuts from "../images/nuts.png";
 
 function Statistics({ monthlyTotals }) {
   if (Object.keys(monthlyTotals).length === 0) {
@@ -21,60 +20,50 @@ function Statistics({ monthlyTotals }) {
     );
   }
 
-  const formatMonthYear = (monthYear) => {
-    const [month, year] = monthYear.split("/");
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    return `${monthNames[parseInt(month, 10) - 1]} / ${year}`;
-  };
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  const formatMonthYearShort = (monthYear) => {
+  const formatMonthYear = (monthYear, short = false) => {
     const [month, year] = monthYear.split("/");
-    return `${month}/${year.slice(-2)}`;
+    return short
+      ? `${month}/${year.slice(-2)}`
+      : `${monthNames[+month - 1]} / ${year}`;
   };
 
   const generateMonthYearKeys = () => {
     const currentYear = new Date().getFullYear();
-    const keys = [];
-
-    for (let month = 1; month <= 12; month++) {
-      const monthKey = `${String(month).padStart(2, "0")}/${currentYear}`;
-      keys.push(monthKey);
-    }
-
-    return keys;
+    return Array.from(
+      { length: 12 },
+      (_, month) => `${String(month + 1).padStart(2, "0")}/${currentYear}`
+    );
   };
 
   const groupByMonthYear = (totals) => {
-    const grouped = {};
-
-    Object.keys(totals).forEach((date) => {
-      const monthYear = date;
-
-      if (!grouped[monthYear]) {
-        grouped[monthYear] = { total: 0, purchaseCount: 0 };
-      }
-      grouped[monthYear].total += totals[date].total;
-      grouped[monthYear].purchaseCount += totals[date].purchaseCount;
-    });
-
-    return grouped;
+    return Object.entries(totals).reduce(
+      (grouped, [date, { total, purchaseCount }]) => {
+        grouped[date] = {
+          total: (grouped[date]?.total || 0) + total,
+          purchaseCount: (grouped[date]?.purchaseCount || 0) + purchaseCount,
+        };
+        return grouped;
+      },
+      {}
+    );
   };
 
   const groupedTotals = groupByMonthYear(monthlyTotals);
-  const currentYear = new Date().getFullYear();
   const allMonthYearKeys = generateMonthYearKeys();
   const completeTotals = allMonthYearKeys.reduce((acc, monthYear) => {
     acc[monthYear] = groupedTotals[monthYear] || { total: 0, purchaseCount: 0 };
@@ -82,7 +71,7 @@ function Statistics({ monthlyTotals }) {
   }, {});
 
   const formattedData = Object.keys(completeTotals).map((monthYear) => ({
-    monthYear: formatMonthYearShort(monthYear),
+    monthYear: formatMonthYear(monthYear, true),
     total: completeTotals[monthYear].total,
     purchaseCount: completeTotals[monthYear].purchaseCount,
   }));
@@ -90,26 +79,18 @@ function Statistics({ monthlyTotals }) {
   return (
     <div className="statistics">
       <Nav />
-
       <div className="statistics__section">
         <div className="statistics__monthlist">
           <h2 className="statistics__title">Monthly Expenses</h2>
-
           <div className="statistics__list">
             <ul>
-              {Object.keys(completeTotals)
-                .filter(
-                  (monthYear) => completeTotals[monthYear].purchaseCount > 0
-                )
-                .map((monthYear) => (
+              {Object.entries(completeTotals)
+                .filter(([, { purchaseCount }]) => purchaseCount > 0)
+                .map(([monthYear, { total, purchaseCount }]) => (
                   <li className="statistics__li" key={monthYear}>
-                    {formatMonthYear(monthYear)}:{" "}
-                    {completeTotals[monthYear].total.toFixed(2)}€ (
-                    {completeTotals[monthYear].purchaseCount}{" "}
-                    {completeTotals[monthYear].purchaseCount === 1
-                      ? "purchase"
-                      : "purchases"}
-                    )
+                    {formatMonthYear(monthYear)}: {total.toFixed(2)}€ (
+                    {purchaseCount}{" "}
+                    {purchaseCount === 1 ? "purchase" : "purchases"})
                   </li>
                 ))}
             </ul>

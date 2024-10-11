@@ -163,18 +163,18 @@ input[type="checkbox"] {
   display: grid;
   place-content: center;
   padding: 4px;
-}
 
-input[type="checkbox"]::before {
-  content: "";
-  width: 1.2em;
-  height: 1.2em;
-  transform: scale(0);
-  box-shadow: inset 1em 1em rgb(237, 177, 12);
-}
+  &::before {
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    transform: scale(0);
+    box-shadow: inset 1em 1em rgb(237, 177, 12);
+  }
 
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
+  &:checked::before {
+    transform: scale(1);
+  }
 }
 
 .button {
@@ -203,15 +203,15 @@ input[type="checkbox"]:checked::before {
   &____close {
     cursor: pointer;
   }
-}
 
-.modal-overlay {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  &-overlay {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
 }
