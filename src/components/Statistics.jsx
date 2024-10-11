@@ -88,8 +88,8 @@ function Statistics({ monthlyTotals }) {
                 .filter(([, { purchaseCount }]) => purchaseCount > 0)
                 .map(([monthYear, { total, purchaseCount }]) => (
                   <li className="statistics__li" key={monthYear}>
-                    {formatMonthYear(monthYear)}: {total.toFixed(2)}€ (
-                    {purchaseCount}{" "}
+                    <strong>{formatMonthYear(monthYear)}</strong>:{" "}
+                    {total.toFixed(2)}€ ({purchaseCount}{" "}
                     {purchaseCount === 1 ? "purchase" : "purchases"})
                   </li>
                 ))}
