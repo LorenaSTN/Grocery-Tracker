@@ -8,6 +8,11 @@
     height: 27vh;
   }
 
+  &__norecords {
+    display: flex;
+    justify-content: center;
+  }
+
   &__monthlist {
     background-image: url("../../images/paper.png");
     background-size: cover;
