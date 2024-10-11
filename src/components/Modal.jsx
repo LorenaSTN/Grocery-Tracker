@@ -19,7 +19,7 @@ function Modal({
           <span className="modal__close" onClick={onCloseModal}>
             &times;
           </span>
-          <h2>Add Price for "{products[selectedProductIndex]?.name}"</h2>
+          <h2>Add Price for {products[selectedProductIndex]?.name}</h2>
           <form onSubmit={onSubmitPrice}>
             <input
               type="number"

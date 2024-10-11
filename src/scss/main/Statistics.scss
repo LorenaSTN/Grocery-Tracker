@@ -1,36 +1,39 @@
 .statistics {
   height: 100vh;
 
-  &__nuts {
-    display: none;
+  // &__nuts {
+  //   display: none;
 
-    @media screen and (min-width: 790px) {
-      display: block;
-      position: absolute;
-      top: 65%;
-      left: 83%;
-      z-index: 0;
-      width: 16vw;
-    }
-  }
+  //   @media screen and (min-width: 790px) {
+  //     display: block;
+  //     position: absolute;
+  //     top: 65%;
+  //     left: 83%;
+  //     z-index: 0;
+  //     width: 16vw;
+  //   }
+  // }
 
   &__container {
     display: flex;
-    flex-direction: center;
     justify-content: center;
+    align-items: center;
+    height: 27vh;
   }
 
   &__monthlist {
     background-image: url("../../images/paper.png");
     background-size: cover;
-    width: fit-content;
+    width: max-content;
     height: fit-content;
     padding: 20px;
+    margin: 10px;
   }
 
   &__title {
     font-family: "Cabin", sans-serif;
     text-align: center;
+    font-size: 25px;
   }
 
   &__list {
@@ -42,15 +45,31 @@
 
   &__li {
     font-family: "Cabin", sans-serif;
+    font-size: 16px;
   }
 
   &__section {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90vh;
+    align-items: center;
+
+    @media screen and (min-width: 990px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
   }
 
   &__chart {
-    width: 40vw;
     font-family: "Cabin", sans-serif;
+    padding: 15px;
+    overflow-x: auto;
+    width: 60vw;
+
+    @media screen and (min-width: 990px) {
+      width: 38vw;
+    }
   }
 }

@@ -9,9 +9,13 @@
 
 .container_products {
   padding: 10px;
-
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+
+  @media screen and (min-width: 790px) {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
 .form {
@@ -25,19 +29,30 @@
 
 .products {
   &__home {
-    padding: 15px;
-    width: 3.5vw;
+    width: 6.5vw;
     cursor: pointer;
+    padding: 5px;
     filter: drop-shadow(0px 0px 5px rgb(135, 115, 80));
+    @media screen and (min-width: 490px) {
+      width: 4.8vw;
+      padding: 10px;
+    }
+    @media screen and (min-width: 790px) {
+      width: 3.2vw;
+      padding: 15px;
+    }
+
+    &__home:active {
+      transform: scale(0.9);
+    }
   }
   &__juice {
     display: none;
 
-    @media screen and (min-width: 790px) {
+    @media screen and (min-width: 1100px) {
       display: block;
       z-index: 0;
       width: 26vw;
-      margin-left: 100px;
     }
   }
   &__form {
@@ -45,18 +60,21 @@
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-right: 150px;
+
+    @media screen and (min-width: 790px) {
+      margin-right: 150px;
+    }
   }
 
   &__list {
     background-image: url("../../images/paper.png");
     background-size: cover;
-    padding: 40px;
+    padding: 28px;
     width: 100%;
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: calc(100vh - 150px);
+    max-height: calc(100vh - 350px);
     display: flex;
     flex-direction: column;
     z-index: 1;
@@ -65,20 +83,31 @@
   &__title {
     text-align: center;
     font-family: "Satisfy";
-    font-size: 45px;
+    font-size: 28px;
     position: sticky;
     top: 0;
     padding: 20px 0;
     z-index: 1;
     display: block;
+    background-color: #fffff4;
+
+    @media screen and (min-width: 790px) {
+      font-size: 45px;
+    }
   }
 
   &__ul {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0px, 1fr));
-    grid-gap: 20px;
-    justify-items: start;
-    width: 100%;
+    @media screen and (min-width: 790px) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0px, 1fr));
+      grid-gap: 20px;
+      justify-items: start;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: repeat(3, minmax(0px, 1fr));
+    }
   }
 
   &__li {

@@ -1,6 +1,6 @@
 import Grocery from "../images/grocery.png";
 import "../scss/main/Header.scss";
-import Menu from "../components/Menu.jsx";
+import Menu from "./Menu.jsx";
 import Donut from "../images/donut3.png";
 import Donut2 from "../images/donut2.png";
 

@@ -1,10 +1,10 @@
 import "../scss/App.scss";
 import { useState, useEffect } from "react";
-import Header from "./Header";
-import ProductList from "./ProductsList";
+import Header from "./Header.jsx";
+import ProductList from "./ProductsList.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import localStorage from "./services/localStorage.js";
-import Statistics from "./Statistics";
+import Statistics from "./Statistics.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
