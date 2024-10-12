@@ -16,7 +16,7 @@ function Statistics({ monthlyTotals }) {
       <div className="statistics">
         <Nav />
         <div className="statistics__norecords">
-          <div className="statistics__monthlist">
+          <div className="statistics__norecords__monthlist">
             <h2 className="statistics__title">No recorded expenses</h2>
           </div>
         </div>

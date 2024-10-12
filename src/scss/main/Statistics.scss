@@ -9,8 +9,19 @@
   }
 
   &__norecords {
+    height: 80vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    &__monthlist {
+      background-image: url("../../images/paper.png");
+      background-size: cover;
+      width: max-content;
+      height: fit-content;
+      padding: 28px;
+      margin: 10px;
+    }
   }
 
   &__monthlist {

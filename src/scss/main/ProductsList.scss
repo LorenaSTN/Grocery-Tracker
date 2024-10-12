@@ -115,12 +115,47 @@
   }
 
   &__input {
-    margin-right: 30px;
+    margin: 10px 30px 0px 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 2px solid #c4c4c4;
+    border-radius: 2px;
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: 80%;
+      background-color: rgb(237, 177, 12);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.2s ease-in-out;
+      border-radius: 2px;
+    }
+
+    &:checked {
+      border: none;
+    }
+    &:checked::before {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
   }
 
   &__span {
     font-family: "Satisfy", cursive;
-    font-size: 25px;
+    font-size: 20px;
+
+    @media screen and (min-width: 590px) {
+      font-size: 25px;
+    }
   }
 
   &__button {
@@ -159,24 +194,6 @@
   }
 }
 
-input[type="checkbox"] {
-  display: grid;
-  place-content: center;
-  padding: 4px;
-
-  &::before {
-    content: "";
-    width: 1.2em;
-    height: 1.2em;
-    transform: scale(0);
-    box-shadow: inset 1em 1em rgb(237, 177, 12);
-  }
-
-  &:checked::before {
-    transform: scale(1);
-  }
-}
-
 .button {
   background-color: rgb(255, 179, 48);
   font-family: "Cabin", sans-serif;
@@ -186,32 +203,4 @@ input[type="checkbox"] {
   padding: 5px 10px;
   color: rgb(59, 25, 3);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-.modal {
-  z-index: 1000;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  width: 300px;
-
-  &____close {
-    cursor: pointer;
-  }
-
-  &-overlay {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
 }

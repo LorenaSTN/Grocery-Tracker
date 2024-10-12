@@ -1,3 +1,5 @@
+import "../scss/main/Modal.scss";
+
 function Modal({
   showModal,
   onCloseModal,
@@ -17,9 +19,9 @@ function Modal({
       <div className="modal">
         <div className="modal__content">
           <span className="modal__close" onClick={onCloseModal}>
-            &times;
+            <i class="fa-solid fa-xmark"></i>
           </span>
-          <h2>Add Price for {products[selectedProductIndex]?.name}</h2>
+          <h2>Add price for {products[selectedProductIndex]?.name}</h2>
           <form onSubmit={onSubmitPrice}>
             <input
               type="number"
@@ -28,8 +30,11 @@ function Modal({
               onChange={onPriceChange}
               placeholder="Enter price"
               required
+              className="modal__input"
             />
-            <button type="submit">Submit</button>
+            <button className="button" type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>
