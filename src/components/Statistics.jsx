@@ -108,7 +108,7 @@ function Statistics({ monthlyTotals }) {
               <YAxis />
               <Tooltip />
               <CartesianGrid stroke="#DDAE7E" />
-              <Bar dataKey="total" fill="rgb(165, 0, 83)" barSize={40} />
+              <Bar dataKey="total" fill="rgb(255, 179, 48)" barSize={40} />
             </BarChart>
           </ResponsiveContainer>
         </div>
