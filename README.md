@@ -4,49 +4,37 @@ Grocery Tracker is a web application designed to help you manage your grocery sh
 
 <img width="1423" alt="Captura de pantalla 2024-10-12 a las 18 13 45" src="https://github.com/user-attachments/assets/7e9aadae-0802-4f36-a5f4-8cdb05cd69ba">
 
-
-
 ## Features
 
-- **Shopping List**: 
   - Easily create and manage a shopping list by adding products.
   - Mark items as purchased, which triggers a modal to input the price.
-
-- **Expense Tracking**: 
   - Keep track of how much you spend by entering prices for each item after purchase.
   - All entered prices are added to the bottom of the shopping list for easy reference.
-
-- **Finalize Purchase**: 
   - Once your shopping is complete, simply click "Finalize Purchase" to clear the list.
-  
-- **Statistics Dashboard**: 
   - View monthly spending statistics, including the total amount spent and the number of shopping trips.
 
   
 ## Technologies
 
-- HTML
-- SCSS
-- React
-- Recharts
+HTML, SASS, REACT. 
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/LorenaSTN/Grocery-Tracker.git
+Steps to follow:
 
-2. Navigate to the folder
-   ```bash
-    cd Grocery-Tracker
-    ```
-3. Install dependencies:
-   ```bash
-    npm install
-    ```
-4. Run the app:
-   ```bash
-    npm run dev
-    ```
+```bash
+git clone [https://github.com/LorenaSTN/Grocery-Tracker.git]
+
+cd Grocery-Tracker
+
+npm install
+```
+
+For running the proyect:
+
+```bash
+npm run dev
+```
+
 
 
