@@ -1,0 +1,25 @@
+.Nav {
+  &-wrapper {
+    height: 58px;
+    position: sticky;
+    top: -8px;
+    padding-top: 8px;
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    color: hsl(33, 89%, 34%);
+    background: hsl(33, 100%, 94%);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px;
+  }
+
+  &-ul {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    margin: 0;
+    margin-right: 60px;
+  }
+
+  &-li {
+    margin: 0px 20px;
+  }
+}
