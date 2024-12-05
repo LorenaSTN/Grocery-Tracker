@@ -1,8 +1,17 @@
 .statistics {
-  &__chart {
+  height: 90vh;
+  &-title {
+    font-family: "Lilita One", sans-serif;
+    font-size: 45px;
+    margin: 0;
+    padding-top: 30px;
+    text-align: center;
+    color: hsl(153, 30%, 12%);
+  }
+  &-chart {
     display: flex;
     justify-content: space-around;
     height: 400px;
-    margin-top: 20px;
+    // margin-top: 20px;
   }
 }
