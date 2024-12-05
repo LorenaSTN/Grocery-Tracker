@@ -5,10 +5,11 @@
     top: -8px;
     padding-top: 8px;
     font-family: "Lato", sans-serif;
-    font-weight: 600;
-    color: hsl(33, 89%, 34%);
-    background: hsl(33, 100%, 94%);
+    font-weight: 800;
+    color: hsl(154, 15%, 88%);
+    background-color: hsl(153, 30%, 16%);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 5px;
+    z-index: 9;
   }
 
   &-ul {
@@ -21,5 +22,7 @@
 
   &-li {
     margin: 0px 20px;
+    cursor: pointer;
+    list-style: none;
   }
 }

@@ -1,14 +1,19 @@
 import "../scss/components/Header.scss";
+import Fruit from "../images/fruit.png";
+import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ setCurrentSlide }) {
   return (
-    <>
-      <header>
+    <div className="header-wrapper">
+      <div className="header-backgroundshape"></div>
+      <header className="header-divtitle">
         <h1 className="header-title">Grocery Tracker</h1>
       </header>
 
       <div className="home-sectionwrapper">
-        <section className="home-section1"></section>
+        <section className="home-section1">
+          <img className="home-image" src={Fruit} alt="Cesta de fruta" />
+        </section>
         <section className="home-section2">
           <div className="section2-wrapper">
             <div className="slider">
@@ -18,33 +23,48 @@ function Header() {
               <div className="slides">
                 <div className="first-slide">
                   <h4 className="section2-titles">
-                    Crea y organiza tu lista de compras
+                    Crea y organiza tus compras
                   </h4>
-                  <p>Agrega productos fácilmente a tu lista.</p>
-                  <p>
-                    Marca los artículos como "comprados" y registra su precio de
-                    manera sencilla.
-                  </p>
+                  <ul>
+                    <li>Agrega productos fácilmente y organiza tu compra.</li>
+                    <li>
+                      Marca los artículos como "comprados" y registra su precio
+                      de manera sencilla.
+                    </li>
+                  </ul>
                 </div>
                 <div className="second-slide">
                   <h4 className="section2-titles">Controla tus gastos</h4>
-                  <p>
-                    Introduce el precio de cada producto comprado y lleva un
-                    seguimiento de tus gastos en tiempo real.
-                  </p>
-                  <p>Revisa cuánto has gastado en total durante el mes.</p>
+                  <ul>
+                    <li>
+                      Introduce el precio de cada producto comprado y lleva un
+                      seguimiento de tus gastos en tiempo real.
+                    </li>
+                    <li>Revisa cuánto has gastado en total durante el mes.</li>
+                  </ul>
                 </div>
               </div>
 
               <div className="buttons">
-                <label htmlFor="slide1"></label>
-                <label htmlFor="slide2"></label>
+                <label
+                  htmlFor="slide1"
+                  onClick={() => setCurrentSlide(1)}
+                ></label>
+                <label
+                  htmlFor="slide2"
+                  onClick={() => setCurrentSlide(2)}
+                ></label>
               </div>
             </div>
           </div>
         </section>
       </div>
-    </>
+      <div className="header-icon">
+        <Link to="/#compras">
+          <i className="fa-solid fa-caret-down"></i>
+        </Link>
+      </div>
+    </div>
   );
 }
 

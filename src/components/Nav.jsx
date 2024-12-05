@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-    <>
-      <div className="Nav-wrapper">
-        <ul className="Nav-ul">
-          <li className="Nav-li">Inicio</li>
-          <li className="Nav-li">Compras</li>
-          <li className="Nav-li">Gastos</li>
-        </ul>
-      </div>
-    </>
+    <div className="Nav-wrapper">
+      <ul className="Nav-ul">
+        <li className="Nav-li">
+          <Link to="/#inicio">Inicio</Link>
+        </li>
+        <li className="Nav-li">
+          <Link to="/#compras">Compras</Link>
+        </li>
+        <li className="Nav-li">
+          <Link to="/#gastos">Gastos</Link>
+        </li>
+      </ul>
+    </div>
   );
 }
 

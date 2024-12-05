@@ -1,12 +1,175 @@
 import "../scss/App.scss";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import localStorage from "./services/localStorage";
+import useSectionObserver from "./services/useSectionObserver";
 import Nav from "./Nav";
 import Header from "./Header";
+import Shopping from "./Shopping";
+import Statistics from "./Statistics";
 
 function App() {
+  //variables de estado
+  const [product, setProduct] = useState("");
+  const [productsList, setProductsList] = useState(
+    localStorage.get("groceryList", [])
+  );
+  const [total, setTotal] = useState(localStorage.get("totalPrice", 0));
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProductIndex, setSelectedProductIndex] = useState(null);
+  const [price, setPrice] = useState(0);
+  const [monthlyTotals, setMonthlyTotals] = useState(
+    localStorage.get("monthlyTotals", {})
+  );
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [hash, setHash] = useState("");
+
+  const location = useLocation();
+
+  // funciones
+
+  const handleInputChange = (ev) => {
+    setProduct(ev.target.value);
+  };
+
+  const handleAddProduct = (ev) => {
+    ev.preventDefault();
+    if (product.trim() !== "") {
+      setProductsList([
+        ...productsList,
+        { name: product, checked: false, price: 0 },
+      ]);
+      setProduct("");
+    }
+  };
+
+  const handleCheckedProduct = (index) => {
+    const updatedProducts = productsList.map((prod, i) =>
+      i === index ? { ...prod, checked: !prod.checked } : prod
+    );
+    setProductsList(updatedProducts);
+    setSelectedProductIndex(index);
+    setShowModal(true);
+  };
+
+  const handleRemoveProduct = (index) => {
+    const updatedProducts = productsList.filter((_, i) => i !== index);
+    const removedProductPrice = productsList[index].price || 0;
+    const newTotal = total - removedProductPrice;
+
+    setProductsList(updatedProducts);
+    setTotal(newTotal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedProductIndex(null);
+    setPrice(0);
+  };
+
+  const handlePriceChange = (ev) => {
+    setPrice(parseFloat(ev.target.value));
+  };
+
+  const handleSubmitPrice = (ev) => {
+    ev.preventDefault();
+
+    if (!isNaN(price) && price > 0) {
+      const updatedProducts = [...productsList];
+      updatedProducts[selectedProductIndex].price = price;
+
+      setProductsList(updatedProducts);
+
+      const newTotal = updatedProducts.reduce(
+        (acc, prod) => acc + (prod.price || 0),
+        0
+      );
+      setTotal(newTotal);
+      handleCloseModal();
+    }
+  };
+
+  const handleSaveTotal = () => {
+    const currentDate = new Date();
+    const currentMonth = (currentDate.getMonth() + 1)
+      .toString()
+      .padStart(2, "0");
+    const currentYear = currentDate.getFullYear();
+    const currentMonthYear = `${currentMonth}/${currentYear}`;
+    const updatedMonthlyTotals = { ...monthlyTotals };
+
+    if (typeof updatedMonthlyTotals[currentMonthYear] !== "object") {
+      updatedMonthlyTotals[currentMonthYear] = {
+        total: 0,
+        purchaseCount: 0,
+      };
+    }
+    updatedMonthlyTotals[currentMonthYear].total += total;
+    updatedMonthlyTotals[currentMonthYear].purchaseCount += 1;
+
+    setMonthlyTotals(updatedMonthlyTotals);
+    setTotal(0);
+    setProductsList([]);
+  };
+
+  useSectionObserver(setHash);
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location.hash]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide === 1 ? 2 : 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const radio = document.getElementById(`slide${currentSlide}`);
+    if (radio) radio.checked = true;
+  }, [currentSlide]);
+
+  useEffect(() => {
+    localStorage.set("groceryList", productsList);
+    localStorage.set("totalPrice", total);
+    localStorage.set("monthlyTotals", monthlyTotals);
+  }, [productsList, total, monthlyTotals]);
+
   return (
     <div>
       <Nav />
-      <Header />
+      <div id="inicio">
+        <Header />
+      </div>
+      <div id="compras">
+        <Shopping
+          product={product}
+          onInputChange={handleInputChange}
+          onAddProduct={handleAddProduct}
+          products={productsList}
+          onCheckedProduct={handleCheckedProduct}
+          onRemoveProduct={handleRemoveProduct}
+          showModal={showModal}
+          selectedProductIndex={selectedProductIndex}
+          price={price}
+          onPriceChange={handlePriceChange}
+          onSubmitPrice={handleSubmitPrice}
+          total={total}
+          onCloseModal={handleCloseModal}
+          onSaveTotal={handleSaveTotal}
+          monthlyTotals={monthlyTotals}
+        />
+      </div>
+      <div id="gastos">
+        <Statistics monthlyTotals={monthlyTotals} />
+      </div>
     </div>
   );
 }

@@ -1,33 +1,85 @@
-.header-title {
-  font-family: "Anton SC", sans-serif;
-  font-size: 110px;
-  text-align: center;
-  margin: 20px 0px 5px;
-  color: hsl(32, 97%, 25%);
-}
+.header {
+  &-wrapper {
+    height: 100vh;
+    position: relative;
+    z-index: 0;
 
+    &-divtitle {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  &-backgroundshape {
+    position: absolute;
+
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    background-color: hsl(153, 30%, 92%);
+
+    z-index: 1;
+  }
+  &-title {
+    position: relative;
+    z-index: 3;
+    font-family: "Lilita One", sans-serif;
+    font-size: 140px;
+    text-align: center;
+    margin: 0;
+    color: hsl(153, 30%, 12%);
+
+    // text-shadow: 2px 2px 8px #3c2800;
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: hsl(153, 30%, 25%);
+    padding: 10px 0px;
+    text-shadow: 2px 2px hsl(153, 30%, 5%);
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+  }
+}
 .home {
   &-sectionwrapper {
     width: 100vw;
-    height: 50vh;
+    height: 48vh;
     display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    z-index: 2;
+
+    img {
+      width: 400px;
+      z-index: 2;
+      // margin-top: 20px;
+    }
   }
 
   &-section1 {
     width: 40%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
   }
 
   &-section2 {
-    width: 40%;
-    height: 100%;
-    background-color: hsla(0, 0%, 100%, 0.528);
+    width: 480px;
+    height: 310px;
+    background-color: hsl(152, 17%, 83%);
+    background: hsl(153, 30%, 18%);
     border-radius: 50px;
-    color: hsl(33, 89%, 34%);
+    color: hsl(152, 17%, 83%);
     font-family: "Lato", sans-serif;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 2;
   }
 }
 
@@ -37,49 +89,54 @@
     height: 100%;
   }
   &-titles {
-    font-size: 30px;
-    font-weight: 700;
-    color: hsl(32, 97%, 25%);
-    // font-family: "Anton SC", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: hsl(152, 17%, 90%);
+    text-align: center;
   }
 }
 
 .slider {
   position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 
   input {
     display: none;
   }
 
   .slides {
-    position: relative;
     display: flex;
-    overflow: hidden;
+    width: 200%;
     height: 100%;
+    transition: transform 1s ease-in-out;
   }
 
   .first-slide,
   .second-slide {
-    width: 100%;
-    height: 300px;
-    display: none;
-    font-size: 18px;
-    padding: 5px 30px 20px;
-    // text-align: center;
-    font-weight: 300;
+    width: 50%;
+    height: 80%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    padding: 20px 0px;
+    box-sizing: border-box;
   }
 
-  input#slide1:checked ~ .slides .first-slide {
-    display: block;
+  input#slide1:checked ~ .slides {
+    transform: translateX(0);
   }
 
-  input#slide2:checked ~ .slides .second-slide {
-    display: block;
+  input#slide2:checked ~ .slides {
+    transform: translateX(-50%);
   }
 
   .buttons {
     position: absolute;
-    bottom: 20px;
+    bottom: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -89,7 +146,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background-color: rgb(255, 255, 255);
+      background-color: hsl(152, 17%, 88%);
       opacity: 0.6;
       cursor: pointer;
       transition: transform 300ms ease-in-out;
@@ -106,4 +163,9 @@
     opacity: 1;
     transform: scale(1.2);
   }
+}
+
+.slides li {
+  margin-bottom: 15px;
+  margin-right: 15px;
 }

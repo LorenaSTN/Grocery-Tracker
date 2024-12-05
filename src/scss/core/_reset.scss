@@ -6,13 +6,14 @@
 
 body {
   margin: 0;
-  background: radial-gradient(
-    circle,
-    rgb(255, 255, 227) 0%,
-    rgb(244, 211, 133) 65%
-  );
+  background-color: rgb(255, 253, 253);
 }
 
-li {
-  list-style: none;
+a {
+  text-decoration: none;
+  color: inherit;
 }
+
+// li {
+//   list-style: none;
+// }
