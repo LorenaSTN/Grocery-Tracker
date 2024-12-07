@@ -1,17 +1,23 @@
 .statistics {
-  height: 90vh;
+  height: fit-content;
+  background-color: hsl(153, 30%, 92%);
+  padding-bottom: 50px;
+
   &-title {
     font-family: "Lilita One", sans-serif;
-    font-size: 45px;
+    font-size: 55px;
     margin: 0;
-    padding-top: 30px;
+    padding-top: 60px;
     text-align: center;
     color: hsl(153, 30%, 12%);
   }
+
   &-chart {
     display: flex;
     justify-content: space-around;
-    height: 400px;
-    // margin-top: 20px;
+
+    @media screen and (max-width: 720px) {
+      flex-direction: column;
+    }
   }
 }

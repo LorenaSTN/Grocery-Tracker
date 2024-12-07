@@ -61,7 +61,7 @@ function Shopping({
                     {prod.name}
                   </span>
                   <button
-                    className="material-symbols-outlined products__button"
+                    className="material-symbols-outlined products-button"
                     onClick={handleRemove.bind(null, index)}
                   >
                     <i class="fa-solid fa-xmark"></i>
