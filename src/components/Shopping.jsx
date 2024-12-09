@@ -1,6 +1,5 @@
 import "../scss/components/Shopping.scss";
 import Modal from "./Modal.jsx";
-
 function Shopping({
   product,
   onInputChange,
@@ -20,7 +19,6 @@ function Shopping({
   const handleCheck = (index) => {
     onCheckedProduct(index);
   };
-
   const handleRemove = (index) => {
     onRemoveProduct(index);
   };
@@ -42,7 +40,6 @@ function Shopping({
             Añadir
           </button>
         </form>
-
         <div className="products-list">
           <div>
             <h3 className="products-title">LISTA:</h3>
@@ -78,7 +75,6 @@ function Shopping({
           </div>
         </div>
       </div>
-
       <Modal
         showModal={showModal}
         onCloseModal={onCloseModal}
@@ -91,5 +87,4 @@ function Shopping({
     </div>
   );
 }
-
 export default Shopping;

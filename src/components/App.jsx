@@ -14,6 +14,9 @@ function App() {
     localStorage.get("groceryList", [])
   );
   const [total, setTotal] = useState(localStorage.get("totalPrice", 0));
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProductIndex, setSelectedProductIndex] = useState(null);
+  const [price, setPrice] = useState("");
   const [monthlyTotals, setMonthlyTotals] = useState(
     localStorage.get("monthlyTotals", {})
   );
@@ -39,11 +42,39 @@ function App() {
       i === index ? { ...prod, checked: !prod.checked } : prod
     );
     setProductsList(updatedProducts);
+    setSelectedProductIndex(index);
+    setShowModal(true);
   };
 
   const handleRemoveProduct = (index) => {
     const updatedProducts = productsList.filter((_, i) => i !== index);
     setProductsList(updatedProducts);
+    setTotal(newTotal);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setPrice(0);
+    setSelectedProductIndex(null);
+  };
+
+  const handlePriceChange = (ev) => {
+    setPrice(parseFloat(ev.target.value));
+  };
+
+  const handleSubmitPrice = (ev) => {
+    ev.preventDefault();
+    if (!isNaN(price) && price > 0) {
+      const updatedProducts = [...productsList];
+      updatedProducts[selectedProductIndex].price = price;
+      setProductsList(updatedProducts);
+      const newTotal = updatedProducts.reduce(
+        (acc, prod) => acc + (prod.price || 0),
+        0
+      );
+      setTotal(newTotal);
+      handleCloseModal();
+    }
   };
 
   const handleSaveTotal = () => {
@@ -54,8 +85,11 @@ function App() {
     const currentYear = currentDate.getFullYear();
     const currentMonthYear = `${currentMonth}/${currentYear}`;
     const updatedMonthlyTotals = { ...monthlyTotals };
-    if (!updatedMonthlyTotals[currentMonthYear]) {
-      updatedMonthlyTotals[currentMonthYear] = { total: 0, purchaseCount: 0 };
+    if (typeof updatedMonthlyTotals[currentMonthYear] !== "object") {
+      updatedMonthlyTotals[currentMonthYear] = {
+        total: 0,
+        purchaseCount: 0,
+      };
     }
     updatedMonthlyTotals[currentMonthYear].total += total;
     updatedMonthlyTotals[currentMonthYear].purchaseCount += 1;
@@ -162,8 +196,15 @@ function App() {
           products={productsList}
           onCheckedProduct={handleCheckedProduct}
           onRemoveProduct={handleRemoveProduct}
+          showModal={showModal}
+          selectedProductIndex={selectedProductIndex}
+          price={price}
+          onPriceChange={handlePriceChange}
+          onSubmitPrice={handleSubmitPrice}
           total={total}
+          onCloseModal={handleCloseModal}
           onSaveTotal={handleSaveTotal}
+          monthlyTotals={monthlyTotals}
         />
       </div>
       <div id="gastos">
