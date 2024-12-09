@@ -11,11 +11,9 @@ import "../scss/components/Statistics.scss";
 function Statistics({ formattedData, formattedDataDonut, tickValues, colors }) {
   if (formattedData.length === 0) {
     return (
-      <div className="statistics">
-        <div className="statistics-norecords">
-          <div className="statistics-norecords-monthlist">
-            <h2 className="statistics-title">No hay gastos registrados</h2>
-          </div>
+      <div className="statistics-norecords">
+        <div>
+          <h2 className="statistics-title">No hay gastos registrados</h2>
         </div>
       </div>
     );
@@ -24,7 +22,7 @@ function Statistics({ formattedData, formattedDataDonut, tickValues, colors }) {
   return (
     <>
       <div className="statistics">
-        <div className="statistics-monthlist">
+        <div>
           <h2 className="statistics-title">Gastos Mensuales</h2>
         </div>
 
@@ -88,7 +86,7 @@ function Statistics({ formattedData, formattedDataDonut, tickValues, colors }) {
               labelRadius={80}
               style={{
                 data: {
-                  fill: ({ index }) => colors[index % colors.length], 
+                  fill: ({ index }) => colors[index % colors.length],
                   stroke: "#ffffff",
                   strokeWidth: 2,
                 },

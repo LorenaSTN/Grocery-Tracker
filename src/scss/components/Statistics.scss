@@ -19,4 +19,10 @@
       flex-direction: column;
     }
   }
+
+  &-norecords {
+    height: fit-content;
+    background-color: hsl(153, 30%, 92%);
+    padding: 20px 0px 70px 0px;
+  }
 }
