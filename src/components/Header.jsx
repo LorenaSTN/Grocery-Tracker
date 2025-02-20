@@ -1,5 +1,6 @@
 import "../scss/components/Header.scss";
 import Fruit from "../images/fruit.png";
+import Pantry from "../images/pantry.jpg"
 import { Link } from "react-router-dom";
 
 function Header({ setCurrentSlide }) {
@@ -12,7 +13,7 @@ function Header({ setCurrentSlide }) {
 
       <div className="home-sectionwrapper">
         <section className="home-section1">
-          <img className="home-image" src={Fruit} alt="Cesta de fruta" />
+          <img className="home-image" src={Pantry} alt="Despensa" />
         </section>
         <section className="home-section2">
           <div className="section2-wrapper">
