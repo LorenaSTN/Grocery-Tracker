@@ -2,7 +2,8 @@
 
 Grocery Tracker es una aplicación web diseñada para ayudarte a gestionar tus compras de manera eficiente. Permite a los usuarios crear listas de compras, llevar un registro de gastos y analizar patrones de gasto mensual. Con una interfaz intuitiva, puedes añadir productos a tu lista de compras, introducir precios y visualizar estadísticas sobre tus hábitos de gasto.
 
-![Grocery Tracker](/src/images/captura.png)
+<img width="1440" alt="Captura de pantalla 2025-02-20 a las 10 10 59" src="https://github.com/user-attachments/assets/d1f08134-c18a-4704-a64f-81a55c55daa5" />
+
 
 ## Características
 
